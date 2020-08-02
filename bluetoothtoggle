@@ -1,0 +1,9 @@
+#!/bin/bash
+output=$(bluetoothctl show | sed -n -e 's/^.*Powered: //p')
+  if [[ $output = no ]]; then
+    bluetoothctl power on
+    notify-send "Bluetooth On"
+  else
+    bluetoothctl power off
+    notify-send "Bluetooth Off"
+  fi
